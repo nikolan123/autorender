@@ -5,7 +5,7 @@
  */
 
 import { dirname, join } from '@std/path';
-import { Config, GameConfig, gameModsWhichSupportWorkshop } from './config.ts';
+import { Config, GameConfig } from './config.ts';
 import { logger } from './logger.ts';
 import { colors } from '@cliffy/ansi/colors';
 import { gameFolder, realGameModFolder } from './utils.ts';
@@ -55,15 +55,6 @@ export const createFolders = async (config: Config | null) => {
       logger.info(`Created autorender directory ${autorenderDir}`);
       // deno-lint-ignore no-empty
     } catch {}
-
-    if (gameModsWhichSupportWorkshop.includes(game.mod)) {
-      try {
-        const workshopDir = realGameModFolder(game, 'maps', 'workshop');
-        await Deno.mkdir(workshopDir);
-        logger.info(`Created workshop directory ${workshopDir}`);
-        // deno-lint-ignore no-empty
-      } catch {}
-    }
   }
 };
 
@@ -74,7 +65,6 @@ export const createFolders = async (config: Config | null) => {
 const getGameResolution = (renderQuality: VideoPayload['render_quality']): [number, number] => {
   switch (renderQuality) {
     case RenderQuality.SD_480p:
-      // NOTE: This is 16:10 for now because SAR fails to render if PAR is not 1:1
       return [768, 480];
     case RenderQuality.HD_720p:
       return [1280, 720];
@@ -90,40 +80,6 @@ const getGameResolution = (renderQuality: VideoPayload['render_quality']): [numb
 };
 
 /**
- * Game specific quirks.
- */
-const getAutoexecQuirks = (game: GameConfig) => {
-  let sarTogglewait: string | null = 'sar_togglewait';
-  let sndRestart: string | null = 'sar_on_demo_start snd_restart';
-  let aliasExec: string | null = null;
-  let aliasSvCheats: string | null = null;
-
-  switch (game.mod) {
-    case 'TWTM':
-      // No snd_restart here because it crashes the game.
-      sndRestart = null;
-      // Disable exec because loading a map will execute autoexec.cfg again.
-      aliasExec = 'sar_on_config_exec alias exec ""';
-      // Disable sv_cheats after activation because the game will set it to 0.
-      aliasSvCheats = 'sar_on_config_exec alias sv_cheats ""';
-      break;
-    case 'Portal 2 Speedrun Mod':
-      // No sar_togglewait here because the smsm plugin enables it.
-      sarTogglewait = null;
-      break;
-    default:
-      break;
-  }
-
-  return [
-    sarTogglewait,
-    sndRestart,
-    aliasExec,
-    aliasSvCheats,
-  ].filter((quirk) => quirk !== null) as string[];
-};
-
-/**
  * Prepares autoexec.cfg to queue all demos.
  */
 export const prepareGameLaunch = async (
@@ -132,7 +88,6 @@ export const prepareGameLaunch = async (
     game: GameConfig;
     videos?: VideoPayload[];
     noAutoexec?: boolean;
-    benchmarkFile?: string;
   },
 ): Promise<[string, Deno.Command]> => {
   const { config, game, videos } = options;
@@ -141,27 +96,6 @@ export const prepareGameLaunch = async (
     return join(config.autorender['folder-name'], filename);
   };
 
-  const exitCommand = 'wait 300;exit';
-
-  const playdemo = (
-    video: VideoPayload,
-    index: number,
-    videos: VideoPayload[],
-  ) => {
-    const demoName = getDemoName(video.video_id);
-    const isLastVideo = index == videos.length - 1;
-    const nextCommand = isLastVideo ? exitCommand : `autorender_video_${index + 1}`;
-    const renderOptions = video.render_options?.split('\n')?.join(';') ?? '';
-
-    return (
-      `sar_alias autorender_video_${index} "${renderOptions};playdemo ${demoName};` +
-      `sar_alias autorender_queue ${nextCommand}"`
-    );
-  };
-
-  const usesQueue = (videos?.length ?? 0) > 1;
-  const nextCommand = usesQueue ? 'autorender_queue' : exitCommand;
-  const eventCommand = 'sar_on_renderer_finish';
   const firstVideo = videos?.at(0);
 
   // Quality for each video here should be the same which is handled server-side.
@@ -171,18 +105,15 @@ export const prepareGameLaunch = async (
 
   if (!options.noAutoexec) {
     const renderOptions = firstVideo?.render_options?.split('\n')?.join(';') ?? '';
-    const demoFile = firstVideo?.video_id ?? options.benchmarkFile;
+    const demoFile = firstVideo?.video_id;
 
     const autoexec = [
-      `exec ${game.cfg}`,
-      ...getAutoexecQuirks(game),
-      `sar_quickhud_set_texture crosshair/quickhud${height}-`,
-      `cl_crosshairgap ${height / 120}`,
-      ...(videos ? videos.slice(1).map(playdemo) : []),
-      ...(usesQueue ? ['sar_alias autorender_queue autorender_video_0'] : []),
-      `${eventCommand} "${nextCommand}"`,
-      ...(demoFile ? [`${renderOptions};playdemo ${getDemoName(demoFile)}`] : []),
-    ];
+      'fps_max 60',
+      'host_framerate 60',
+      'demo_quitafterplayback 1',
+      renderOptions,
+      ...(demoFile ? [`startmovie ${getDemoName(demoFile)} tga wav`, `playdemo ${getDemoName(demoFile)}`] : []),
+    ].filter(Boolean);
 
     autoexecFile = realGameModFolder(game, 'cfg', 'autoexec.cfg');
 
@@ -207,7 +138,7 @@ export const prepareGameLaunch = async (
   const args: string[] = [
     argv0,
     '-game',
-    game.mod === 'portalreloaded' ? 'portal2' : game.sourcemod ? `../../sourcemods/${game.mod}` : game.mod,
+    'portal2',
     '-novid',
     // TODO: vulkan is not always available
     //"-vulkan",
@@ -223,10 +154,66 @@ export const prepareGameLaunch = async (
   return [autoexecFile, new Deno.Command(command, { args })];
 };
 
+/** Convert build 852_0's native TGA/WAV capture into mp4 */
+export const encodeSourceCapture = async (config: Config, game: GameConfig, video: VideoPayload) => {
+  const renderDir = realGameModFolder(game, config.autorender['folder-name']);
+  const framePattern = join(renderDir, `${video.video_id}%04d.tga`);
+  const audioFile = join(renderDir, `${video.video_id}.wav`);
+  const videoFile = join(renderDir, `${video.video_id}.mp4`);
+
+  const args = [
+    '-y',
+    '-framerate',
+    '60',
+    '-i',
+    framePattern,
+    '-i',
+    audioFile,
+    '-c:v',
+    'libx264',
+    '-preset',
+    'medium',
+    '-crf',
+    '18',
+    '-pix_fmt',
+    'yuv420p',
+    '-c:a',
+    'aac',
+    '-b:a',
+    '192k',
+    '-shortest',
+    videoFile,
+  ];
+
+  logger.info('Encoding native Source capture', { framePattern, audioFile, videoFile });
+
+  const output = await new Deno.Command('ffmpeg', {
+    args,
+    stdout: 'piped',
+    stderr: 'piped',
+  }).output();
+
+  if (!output.success) {
+    throw new Error(`FFmpeg failed: ${new TextDecoder().decode(output.stderr)}`);
+  }
+
+  for await (const entry of Deno.readDir(renderDir)) {
+    if (
+      entry.isFile &&
+      ((entry.name.startsWith(video.video_id) && entry.name.endsWith('.tga')) ||
+        entry.name === `${video.video_id}.wav`)
+    ) {
+      await Deno.remove(join(renderDir, entry.name));
+    }
+  }
+
+  logger.info('Encoded native Source capture', videoFile);
+};
+
 export class GameProcess {
   process: Deno.ChildProcess | null = null;
   processName = '';
-  timeout: number | null = null;
+  timeout: ReturnType<typeof setTimeout> | null = null;
   autoexecFile = '';
   killed = false;
 
@@ -259,7 +246,6 @@ export class GameProcess {
       timeoutInSeconds?: number;
       noTimeout?: boolean;
       noAutoexec?: boolean;
-      benchmarkFile?: string;
     },
   ) {
     const { config, game, videos } = options;
@@ -269,7 +255,6 @@ export class GameProcess {
       game,
       videos,
       noAutoexec: options.noAutoexec,
-      benchmarkFile: options.benchmarkFile,
     });
 
     this.autoexecFile = autoexecFilePath;

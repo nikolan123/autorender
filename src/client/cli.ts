@@ -5,9 +5,9 @@
  */
 
 import { Command } from '@cliffy/command';
-import { downloadAutorenderConfig, downloadQuickhud, downloadSourceAutoRecord, getConfigOnly } from './config.ts';
+import { getConfigOnly } from './config.ts';
 import { AutorenderVersion } from './constants.ts';
-import { addNewGame, launchGame, runBenchmark, runCheck, runExplain } from './commands.ts';
+import { launchGame, runCheck, runExplain } from './commands.ts';
 
 export interface Options {
   devMode: boolean;
@@ -23,7 +23,7 @@ export const getOptions = () => options;
 const cli = new Command()
   .name('autorender')
   .version(AutorenderVersion)
-  .description('Command line app for rendering and uploading videos to autorender.portal2.sr.')
+  .description('Portal 2 beta build 852_0 demo renderer and uploader.')
   .globalOption('-v, --verbose', 'Turn on verbose error logging.')
   .globalOption('-d, --dev', 'Switch into developer mode.', { hidden: true })
   .globalAction(({ verbose, dev }) => {
@@ -35,28 +35,9 @@ const cli = new Command()
   .command('check')
     .description('Health check of the app.')
     .action(async () => await runCheck(options!))
-  .command('sar')
-    .description('Download latest SourceAutoRecord version.')
-    .option('-c, --canary', 'Download latest canary version.', { default: false })
-    .action(async ({ canary }) => {
-      options!.canary = canary;
-      await downloadSourceAutoRecord(await getConfigOnly(), options!) && Deno.exit(0);
-    })
-  .command('cfg')
-    .description('Download latest autorender.cfg file.')
-    .action(async () => await downloadAutorenderConfig(await getConfigOnly(), options!) && Deno.exit(0))
-  .command('quickhud')
-    .description('Download latest quickhud files.')
-    .action(async () => await downloadQuickhud(await getConfigOnly(), options!) && Deno.exit(0))
-  .command('benchmark')
-    .description('Run a benchmark render for finding the correct scale-timeout value.')
-    .action(async () => await runBenchmark(await getConfigOnly(), options!))
   .command('launch')
-    .description('Test if a game can be launched.')
+    .description('Test whether the configured 852_0 build can be launched.')
     .action(async () => await launchGame(await getConfigOnly(), options!))
-  .command('add-game')
-    .description('Add a new game.')
-    .action(async () => await addNewGame(await getConfigOnly(), options!))
   .command('explain')
     .description('Explain all config values in autorender.yaml.')
     .action(() => runExplain());

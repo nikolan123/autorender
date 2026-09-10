@@ -1,299 +1,60 @@
--- Games
+-- This fork supports only Portal 2 beta build 852_0.
+INSERT INTO games (game_id, name, game_mod, app_id, sourcemod)
+VALUES (1, "Portal 2 Beta (852_0)", "portal2", NULL, 0);
 
-INSERT INTO games (game_id, name, game_mod, app_id, sourcemod) VALUES (1, "Portal 2", "portal2", 620, 0);
-INSERT INTO games (game_id, name, game_mod, app_id, sourcemod) VALUES (2, "Thinking With Time Machine", "TWTM", 286080, 0);
-INSERT INTO games (game_id, name, game_mod, app_id, sourcemod) VALUES (3, "Aperture Tag", "aperturetag", 280740, 0);
-INSERT INTO games (game_id, name, game_mod, app_id, sourcemod) VALUES (4, "Portal Stories: Mel", "portal_stories", 317400, 0);
-INSERT INTO games (game_id, name, game_mod, app_id, sourcemod) VALUES (5, "Portal Reloaded", "portalreloaded", 1255980, 0);
-INSERT INTO games (game_id, name, game_mod, app_id, sourcemod) VALUES (6, "Portal 2 Speedrun Mod", "Portal 2 Speedrun Mod", NULL, 1);
-
--- Maps
-
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a1_intro1", "Container Ride", 1, 62761, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a1_intro2", "Portal Carousel", 1, 62758, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a1_intro3", "Portal Gun", 1, 47458, 47459, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a1_intro4", "Smooth Jazz", 1, 47455, 47454, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a1_intro5", "Cube Momentum", 1, 47452, 47451, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a1_intro6", "Future Starter", 1, 47106, 47107, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a1_intro7", "Secret Panel", 1, 62763, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a1_wakeup", "Wakeup", 1, 62759, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_intro", "Incinerator", 1, 47735, 47734, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_laser_intro", "Laser Intro", 1, 62765, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_laser_stairs", "Laser Stairs", 1, 47736, 47737, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_dual_lasers", "Dual Lasers", 1, 47738, 47739, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_laser_over_goo", "Laser Over Goo", 1, 47742, 47743, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_catapult_intro", "Catapult Intro", 1, 62767, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_trust_fling", "Trust Fling", 1, 47744, 47745, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_pit_flings", "Pit Flings", 1, 47465, 47466, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_fizzler_intro", "Fizzler Intro", 1, 47746, 47747, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_sphere_peek", "Ceiling Catapult", 1, 47748, 47749, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_ricochet", "Ricochet", 1, 47751, 47750, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_bridge_intro", "Bridge Intro", 1, 47752, 47753, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_bridge_the_gap", "Bridge the Gap", 1, 47755, 47754, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_turret_intro", "Turret Intro", 1, 47756, 47757, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_laser_relays", "Laser Relays", 1, 47759, 47758, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_turret_blocker", "Turret Blocker", 1, 47760, 47761, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_laser_vs_turret", "Laser vs Turret", 1, 47763, 47762, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_pull_the_rug", "Pull the Rug", 1, 47764, 47765, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_column_blocker", "Column Blocker", 1, 47766, 47767, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_laser_chaining", "Laser Chaining", 1, 47768, 47769, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_triple_laser", "Triple Laser", 1, 47770, 47771, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_bts1", "Jail Break", 1, 47773, 47772, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_bts2", "Escape", 1, 47774, 47775, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_bts3", "Turret Factory", 1, 47776, 47777, 11, 1);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_bts4", "Turret Sabotage", 1, 47779, 47778, 11, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_bts5", "Neurotoxin Sabotage", 1, 47780, 47781, 11, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_bts6", "Tube Ride", 1, NULL, NULL, 11, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a2_core", "Core", 1, 62771, NULL, 11, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_00", "Long Fall", 1, NULL, NULL, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_01", "Underground", 1, 47783, 47782, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_03", "Cave Johnson", 1, 47784, 47785, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_jump_intro", "Repulsion Intro", 1, 47787, 47786, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_bomb_flings", "Bomb Flings", 1, 47468, 47467, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_crazy_box", "Crazy Box", 1, 47469, 47470, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_transition01", "PotatOS", 1, 47472, 47471, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_speed_ramp", "Propulsion Intro", 1, 47791, 47792, 13, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_speed_flings", "Propulsion Flings", 1, 47793, 47794, 13, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_portal_intro", "Conversion Intro", 1, 47795, 47796, 13, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a3_end", "Three Gels", 1, 47798, 47799, 13, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_intro", "Test", 1, 88350, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_tb_intro", "Funnel Intro", 1, 47800, 47801, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_tb_trust_drop", "Ceiling Button", 1, 47802, 47803, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_tb_wall_button", "Wall Button", 1, 47804, 47805, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_tb_polarity", "Polarity", 1, 47806, 47807, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_tb_catch", "Funnel Catch", 1, 47808, 47809, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_stop_the_box", "Stop the Box", 1, 47811, 47812, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_laser_catapult", "Laser Catapult", 1, 47813, 47814, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_laser_platform", "Laser Platform", 1, 47815, 47816, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_speed_tb_catch", "Propulsion Catch", 1, 47817, 47818, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_jump_polarity", "Repulsion Polarity", 1, 47819, 47820, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_finale1", "Finale 1", 1, 62776, NULL, 15, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_finale2", "Finale 2", 1, 47821, 47822, 15, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_finale3", "Finale 3", 1, 47824, 47823, 15, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "sp_a4_finale4", "Finale 4", 1, 47456, 47457, 15, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_start", "Start", 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_lobby_2", "Lobby", 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_lobby_3", "Lobby", 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_doors", "Doors", 2, 47741, 47740, 1, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_race_2", "Buttons", 2, 47825, 47826, 1, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_laser_2", "Lasers", 2, 47828, 47827, 1, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_rat_maze", "Rat Maze", 2, 47829, 47830, 1, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_laser_crusher", "Laser Crusher", 2, 45467, 45466, 1, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_teambts", "Behind The Scenes", 2, 46362, 46361, 1, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_fling_3", "Flings", 2, 47831, 47832, 2, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_infinifling_train", "Infinifling", 2, 47833, 47834, 2, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_come_along", "Team Retrieval", 2, 47835, 47836, 2, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_fling_1", "Vertical Flings", 2, 47837, 47838, 2, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_catapult_1", "Catapults", 2, 47840, 47839, 2, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_multifling_1", "Multifling", 2, 47841, 47842, 2, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_fling_crushers", "Fling Crushers", 2, 47844, 47843, 2, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_fan", "Industrial Fan", 2, 47845, 47846, 2, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_wall_intro", "Cooperative Bridges", 2, 47848, 47847, 3, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_wall_2", "Bridge Swap", 2, 47849, 47850, 3, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_catapult_wall_intro", "Fling Block", 2, 47854, 47855, 3, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_wall_block", "Catapult Block", 2, 47856, 47857, 3, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_catapult_2", "Bridge Fling", 2, 47858, 47859, 3, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_turret_walls", "Turret Walls", 2, 47861, 47860, 3, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_turret_ball", "Turret Assassin", 2, 52642, 52641, 3, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_wall_5", "Bridge Testing", 2, 52660, 52659, 3, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_redirect", "Cooperative Funnels", 2, 52662, 52661, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_drill", "Funnel Drill", 2, 52663, 52664, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_catch_grind_1", "Funnel Catch", 2, 52665, 52666, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_laser_1", "Funnel Laser", 2, 52667, 52668, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_polarity", "Cooperative Polarity", 2, 52671, 52672, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_polarity2", "Funnel Hop", 2, 52687, 52688, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_polarity3", "Advanced Polarity", 2, 52689, 52690, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_maze", "Funnel Maze", 2, 52691, 52692, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tbeam_end", "Turret Warehouse", 2, 52777, 52778, 4, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_come_along", "Repulsion Jumps", 2, 52694, 52693, 5, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_redirect", "Double Bounce", 2, 52711, 52712, 5, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_bridge", "Bridge Repulsion", 2, 52714, 52713, 5, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_walljumps", "Wall Repulsion", 2, 52715, 52716, 5, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_speed_fling", "Propulsion Crushers", 2, 52717, 52718, 5, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_red_racer", "Turret Ninja", 2, 52735, 52736, 5, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_speed_catch", "Propulsion Retrieval", 2, 52738, 52737, 5, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_longjump_intro", "Vault Entrance", 2, 52740, 52739, 5, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_separation_1", "Separation", 2, 49341, 49342, 6, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_tripleaxis", "Triple Axis", 2, 49343, 49344, 6, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_catapult_catch", "Catapult Catch", 2, 49345, 49346, 6, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_2paints_1bridge", "Bridge Gels", 2, 49347, 49348, 6, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_conversion", "Maintenance", 2, 49349, 49350, 6, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_bridge_catch", "Bridge Catch", 2, 49351, 49352, 6, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_laser_tbeam", "Double Lift", 2, 52757, 52758, 6, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_rat_maze", "Gel Maze", 2, 52759, 52760, 6, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (1, "mp_coop_paint_crazy_box", "Crazier Box", 2, 48287, 48288, 6, 0);
-
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_intro_01", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_training_01b", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_01b", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_scene_map-update2", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_02b", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_03b", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_04a", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_05a-update2", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_06a", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_07", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_08", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (2, "tm_map_final", NULL, 1, NULL, NULL, 0, 0);
-
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_intro_wakeup", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_blue_only", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_blue_only_2", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_blue_only_3", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_blue_only_2_pt2", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_a1_intro4", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_blue_upplatform", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_red_only", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_red_surf", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_all_intro", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_all_rotating_wall", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_all_fizzler", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_all_intro_2", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_all_puzzle2", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_a2_column_blocker", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_all2_puzzle1", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_all_puzzle1", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_all2_escape", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_reveal", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_bridgebounce_2", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_redfirst", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_laserrelay", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_beamscotty", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_bridgebounce", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_roofbounce", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_pickbounce", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (3, "gg_stage_theend", NULL, 1, NULL, NULL, 0, 0);
-
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a1_tramride", "Tramride", 1, 1, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a1_mel_intro", "Mel Intro", 1, 2, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a1_lift", "Lift", 1, 3, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a1_garden", "Garden", 1, 4, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a2_garden_de", "Destroyed Garden", 1, 5, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a2_underbounce", "Underbounce", 1, 6, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a2_once_upon", "Once Upon", 1, 7, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a2_past_power", "Past Power", 1, 8, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a2_ramp", "Ramp", 1, 9, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a2_firestorm", "Firestorm", 1, 10, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a3_junkyard", "Junkyard", 1, 11, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a3_concepts", "Concepts", 1, 12, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a3_paint_fling", "Paint Fling", 1, 13, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a3_faith_plate", "Faith Plate", 1, 14, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a3_transition", "Transition", 1, 15, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a4_overgrown", "Overgrown", 1, 16, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a4_tb_over_goo", "Funnel Over Goo", 1, 17, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a4_two_of_a_kind", "Two Of A Kind", 1, 18, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a4_destroyed", "Destroyed", 1, 19, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a4_factory", "Factory", 1, 20, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a4_core_access", "Core Access", 1, 21, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "st_a4_finale", "Finale", 1, 22, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a1_tramride", "Advanced Tramride", 1, 23, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a1_mel_intro", "Advanced Mel Intro", 1, 24, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a1_lift", "Advanced Lift", 1, 25, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a1_garden", "Advanced Garden", 1, 26, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a2_garden_de", "Advanced Destroyed Garden", 1, 27, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a2_underbounce", "Advanced Underbounce", 1, 28, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a2_once_upon", "Advanced Once Upon", 1, 29, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a2_past_power", "Advanced Past Power", 1, 30, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a2_ramp", "Advanced Ramp", 1, 31, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a2_firestorm", "Advanced Firestorm", 1, 32, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a3_junkyard", "Advanced Junkyard", 1, 33, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a3_concepts", "Advanced Concepts", 1, 34, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a3_paint_fling", "Advanced Paint Fling", 1, 35, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a3_faith_plate", "Advanced Faith Plate", 1, 36, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a3_transition", "Advanced Transition", 1, 37, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a4_overgrown", "Advanced Overgrown", 1, 38, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a4_tb_over_goo", "Advanced Funnel Over Goo", 1, 39, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a4_two_of_a_kind", "Advanced Two Of A Kind", 1, 40, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a4_destroyed", "Advanced Destroyed", 1, 41, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a4_factory", "Advanced Factory", 1, 42, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a4_core_access", "Advanced Core Access", 1, 43, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (4, "sp_a4_finale", "Advanced Finale", 1, 44, NULL, 0, 0);
-
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_001", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_002", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_003", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_004", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_005", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_006", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_007", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_008", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_009", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_010", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_011", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "sp_a1_pr_map_012", NULL, 1, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_start", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_end", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_lobby_3", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_bridge", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_bts", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_catapult", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_cubes", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_fling", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_laser", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_loop", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_portals", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_tbeam", NULL, 2, NULL, NULL, 0, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (5, "mp_coop_pr_teamwork", NULL, 2, NULL, NULL, 0, 0);
-
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a1_intro1", "Container Ride", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a1_intro2", "Portal Carousel", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a1_intro3", "Portal Gun", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a1_intro4", "Smooth Jazz", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a1_intro5", "Cube Momentum", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a1_intro6", "Future Starter", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a1_intro7", "Secret Panel", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a1_wakeup", "Wakeup", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_intro", "Incinerator", 1, NULL, NULL, 7, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_laser_intro", "Laser Intro", 1, NULL, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_laser_stairs", "Laser Stairs", 1, NULL, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_dual_lasers", "Dual Lasers", 1, NULL, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_laser_over_goo", "Laser Over Goo", 1, NULL, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_catapult_intro", "Catapult Intro", 1, NULL, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_trust_fling", "Trust Fling", 1, NULL, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_pit_flings", "Pit Flings", 1, NULL, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_fizzler_intro", "Fizzler Intro", 1, NULL, NULL, 8, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_sphere_peek", "Ceiling Catapult", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_ricochet", "Ricochet", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_bridge_intro", "Bridge Intro", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_bridge_the_gap", "Bridge the Gap", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_turret_intro", "Turret Intro", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_laser_relays", "Laser Relays", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_turret_blocker", "Turret Blocker", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_laser_vs_turret", "Laser vs Turret", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_pull_the_rug", "Pull the Rug", 1, NULL, NULL, 9, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_column_blocker", "Column Blocker", 1, NULL, NULL, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_laser_chaining", "Laser Chaining", 1, NULL, NULL, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_triple_laser", "Triple Laser", 1, NULL, NULL, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_bts1", "Jail Break", 1, NULL, NULL, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_bts2", "Escape", 1, NULL, NULL, 10, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_bts3", "Turret Factory", 1, NULL, NULL, 11, 1);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_bts4", "Turret Sabotage", 1, NULL, NULL, 11, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_bts5", "Neurotoxin Sabotage", 1, NULL, NULL, 11, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_bts6", "Tube Ride", 1, NULL, NULL, 11, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a2_core", "Core", 1, NULL, NULL, 11, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_00", "Long Fall", 1, NULL, NULL, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_01", "Underground", 1, NULL, NULL, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_03", "Cave Johnson", 1, NULL, NULL, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_jump_intro", "Repulsion Intro", 1, NULL, NULL, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_bomb_flings", "Bomb Flings", 1, NULL, NULL, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_crazy_box", "Crazy Box", 1, NULL, NULL, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_transition01", "PotatOS", 1, NULL, NULL, 12, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_speed_ramp", "Propulsion Intro", 1, NULL, NULL, 13, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_speed_flings", "Propulsion Flings", 1, NULL, NULL, 13, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_portal_intro", "Conversion Intro", 1, NULL, NULL, 13, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a3_end", "Three Gels", 1, NULL, NULL, 13, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_intro", "Test", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_tb_intro", "Funnel Intro", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_tb_trust_drop", "Ceiling Button", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_tb_wall_button", "Wall Button", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_tb_polarity", "Polarity", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_tb_catch", "Funnel Catch", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_stop_the_box", "Stop the Box", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_laser_catapult", "Laser Catapult", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_laser_platform", "Laser Platform", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_speed_tb_catch", "Propulsion Catch", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_jump_polarity", "Repulsion Polarity", 1, NULL, NULL, 14, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_finale1", "Finale 1", 1, NULL, NULL, 15, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_finale2", "Finale 2", 1, NULL, NULL, 15, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_finale3", "Finale 3", 1, NULL, NULL, 15, 0);
-INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES (6, "sp_a4_finale4", "Finale 4", 1, NULL, NULL, 15, 0);
+-- all BSPs from 852_0. type: 1 = single-player, 2 = co-op.
+INSERT INTO maps (game_id, name, alias, type, best_time_id, best_portals_id, chapter, auto_fullbright) VALUES
+  (1, "devtest", "Devtest", 1, NULL, NULL, 0, 0),
+  (1, "videotest", "Video Test", 1, NULL, NULL, 0, 0),
+  (1, "p2_lab_start_01", "Lab Start 1", 1, NULL, NULL, 1, 0),
+  (1, "p2_lab_start_02", "Lab Start 2", 1, NULL, NULL, 1, 0),
+  (1, "p2_lab_prehub_1", "Pre-Hub 1", 1, NULL, NULL, 1, 0),
+  (1, "p2_lab_turrets", "Turrets", 1, NULL, NULL, 1, 0),
+  (1, "p2_lab_suctionturrets_1", "Suction Turrets", 1, NULL, NULL, 1, 0),
+  (1, "p2_lab_hub_1", "Hub 1", 1, NULL, NULL, 1, 0),
+  (1, "p2_lab_prehub_2", "Pre-Hub 2", 1, NULL, NULL, 2, 0),
+  (1, "p2_lab_lasers_1", "Lasers", 1, NULL, NULL, 2, 0),
+  (1, "p2_lab_hub_2", "Hub 2", 1, NULL, NULL, 2, 0),
+  (1, "p2_lab_prehub_2a", "Pre-Hub 2A", 1, NULL, NULL, 3, 0),
+  (1, "p2_lab_slowfield_1", "Slow Field", 1, NULL, NULL, 3, 0),
+  (1, "p2_lab_hub_3", "Hub 3", 1, NULL, NULL, 3, 0),
+  (1, "p2_lab_catapult", "Catapult", 1, NULL, NULL, 4, 0),
+  (1, "p2_lab_hub_4", "Hub 4", 1, NULL, NULL, 4, 0),
+  (1, "p2_lab_wall_01", "Wall", 1, NULL, NULL, 5, 0),
+  (1, "p2_lab_hub_5", "Hub 5", 1, NULL, NULL, 5, 0),
+  (1, "p2_lab_mixup", "Mixup", 1, NULL, NULL, 6, 0),
+  (1, "p2_lab_hub_6", "Hub 6", 1, NULL, NULL, 6, 0),
+  (1, "mp_coop_start", "Calibration", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_button_tower", "Button Tower", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_catapult_1", "Catapult 1", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_catapult_2", "Catapult 2", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_catapult_wall_intro", "Catapult Wall Intro", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_come_along", "Come Along", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_doors", "Doors", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_double_catch", "Double Catch", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_fling_1", "Fling 1", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_fling_3", "Fling 3", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_laser_1", "Laser 1", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_laser_2", "Laser 2", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_laser_3", "Laser 3", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_laser_bypass", "Laser Bypass", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_laser_crusher", "Laser Crusher", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_laser_redirect", "Laser Redirect", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_mic_calibration", "Microphone Calibration", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_race_1", "Race 1", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_race_2", "Race 2", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_race_3", "Race 3", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_rat_maze", "Rat Maze", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_trap_1", "Trap 1", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_turret_walls", "Turret Walls", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_vista", "Vista", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_1", "Wall 1", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_2", "Wall 2", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_3", "Wall 3", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_5", "Wall 5", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_6", "Wall 6", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_block", "Wall Block", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_catch", "Wall Catch", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_intro", "Wall Intro", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_stop", "Wall Stop", 2, NULL, NULL, 0, 0),
+  (1, "mp_coop_wall_straight_jump", "Wall Straight Jump", 2, NULL, NULL, 0, 0);

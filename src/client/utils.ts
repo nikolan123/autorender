@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { dirname, join } from '@std/path';
+import { join } from '@std/path';
 import { GameConfig } from './config.ts';
 import { UserAgent } from './constants.ts';
 
@@ -12,29 +12,17 @@ import { UserAgent } from './constants.ts';
  * Join paths with the game folder.
  */
 export const gameFolder = (game: GameConfig, ...paths: string[]) => {
-  return game.sourcemod ? join(dirname(dirname(game.dir)), 'common', 'Portal 2', ...paths) : join(game.dir, ...paths);
+  return join(game.dir, ...paths);
 };
 
-/**
- * Join paths with the real game mod folder.
- * Examples:
- *    - Portal 2              -> "C:\Program Files (x86)\Steam\steamapps\common\Portal 2\portal2"
- *    - Portal 2 Speedrun Mod -> "C:\Program Files (x86)\Steam\steamapps\sourcemods\Portal 2 Speedrun Mod"
- */
+/** Join paths inside 852_0's portal2 directory. */
 export const realGameModFolder = (game: GameConfig, ...paths: string[]) => {
-  return game.sourcemod ? join(game.dir, ...paths) : join(game.dir, game.mod, ...paths);
+  return join(game.dir, 'portal2', ...paths);
 };
 
-/**
- * Join paths with the game mod folder.
- * Examples:
- *    - Portal 2              -> "C:\Program Files (x86)\Steam\steamapps\common\Portal 2\portal2"
- *    - Portal 2 Speedrun Mod -> "C:\Program Files (x86)\Steam\steamapps\common\Portal 2\portal2"
- */
+/** Alias retained for call sites that mean the 852_0 portal2 directory. */
 export const gameModFolder = (game: GameConfig, ...paths: string[]) => {
-  return game.sourcemod
-    ? join(dirname(dirname(game.dir)), 'common', 'Portal 2', 'portal2', ...paths)
-    : join(game.dir, game.mod, ...paths);
+  return realGameModFolder(game, ...paths);
 };
 
 /**

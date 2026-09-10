@@ -151,7 +151,9 @@ export const insertVideo = async (boardSource: BoardSource, entry: ChangelogEntr
           demoInfo.workshopInfo?.title ?? null,
           demoInfo.workshopInfo
             ? demoInfo.workshopInfo.isSinglePlayer ? MapType.WorkshopSinglePlayer : MapType.WorkshopCooperative
-            : null,
+            : demoInfo.fullMapName?.startsWith('mp_')
+            ? MapType.Cooperative
+            : MapType.SinglePlayer,
           demoInfo.workshopInfo?.publishedFileId ?? null,
           demoInfo.workshopInfo?.creator ?? null,
         ],

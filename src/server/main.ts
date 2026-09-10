@@ -42,7 +42,7 @@ import { AppState as ReactAppState } from './app/AppState.ts';
 import { db } from './db.ts';
 import { createStaticRouter } from 'react-router-dom/server';
 import { createFetchRequest, RequestContext, routeHandler, routes } from './app/Routes.ts';
-import { DemoMetadata, getDemoInfo, repairDemo, supportedGameDirs, supportedGameMods } from './demo.ts';
+import { DemoMetadata, getDemoInfo, supportedGameDirs, supportedGameMods } from './demo.ts';
 import { basename } from '@std/path';
 import {
   generateShareId,
@@ -108,7 +108,6 @@ const BUNNY_CDN_VIDEOS_PULL_ZONE = Deno.env.get('BUNNY_CDN_VIDEOS_PULL_ZONE')!;
 const BUNNY_CDN_VIDEOS_LIBRARY_ID = parseInt(Deno.env.get('BUNNY_CDN_VIDEOS_LIBRARY_ID')!, 10);
 const B2_BUCKET_ID = Deno.env.get('B2_BUCKET_ID')!;
 const BOARD_INTEGRATION_START_DATE = '2023-08-25';
-const AUTORENDER_RUN_DEMO_REPAIR = Deno.env.get('AUTORENDER_RUN_DEMO_REPAIR')?.toLowerCase() === 'true';
 const AUTORENDER_SERVE_STORAGE = Deno.env.get('AUTORENDER_SERVE_STORAGE');
 
 (() => {
@@ -347,7 +346,9 @@ apiV1
           demoInfo.workshopInfo?.title ?? null,
           demoInfo.workshopInfo
             ? demoInfo.workshopInfo.isSinglePlayer ? MapType.WorkshopSinglePlayer : MapType.WorkshopCooperative
-            : null,
+            : demoInfo.fullMapName?.startsWith('mp_')
+            ? MapType.Cooperative
+            : MapType.SinglePlayer,
           demoInfo.workshopInfo?.publishedFileId ?? null,
           demoInfo.workshopInfo?.creator ?? null,
         ],
@@ -2050,7 +2051,7 @@ router.get('/connect/client', async (ctx) => {
               break;
             }
 
-            const { demo_required_fix, demo_requires_repair, ...videoPayload } = video;
+            const { demo_required_fix, demo_requires_repair: _demoRequiresRepair, ...videoPayload } = video;
 
             const buffer = new Buffer();
             const payload = new TextEncoder().encode(JSON.stringify(videoPayload));
@@ -2065,18 +2066,7 @@ router.get('/connect/client', async (ctx) => {
 
             const file = await Deno.readFile(filePath);
 
-            if (AUTORENDER_RUN_DEMO_REPAIR && demo_requires_repair) {
-              try {
-                await buffer.write(repairDemo(file.buffer));
-              } catch (err) {
-                logger.error('Error while running demo repair');
-                logger.error(err);
-              } finally {
-                await buffer.write(file);
-              }
-            } else {
-              await buffer.write(file);
-            }
+            await buffer.write(file);
 
             ws.send(buffer.bytes());
 

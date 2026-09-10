@@ -33,7 +33,6 @@ addEventListener('unhandledrejection', (ev) => {
 log.info('Starting bot');
 
 await import('./commands/bot.ts');
-await import('./commands/fixup.ts');
 await import('./commands/preset.ts');
 await import('./commands/render.ts');
 await import('./commands/vid.ts');

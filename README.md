@@ -1,9 +1,11 @@
 [![Deno CI](https://github.com/NeKzor/autorender/actions/workflows/deno.yml/badge.svg)](https://github.com/NeKzor/autorender/actions/workflows/deno.yml)
 [![Release CD](https://github.com/NeKzor/autorender/actions/workflows/release.yml/badge.svg)](https://github.com/NeKzor/autorender/actions/workflows/release.yml)
 
-# autorender
+# autorender for Portal 2 beta 852_0
 
-Render Portal 2 demos on-demand with: `/render demo <file>`
+This fork renders demos from **Portal 2 beta build 852_0 only**. Retail Portal 2, Source mods, workshop maps, and other demo protocols are unsupported.
+
+Render an 852_0 demo on-demand with: `/render demo <file>`
 
 - [Features](#features)
 - [Commands](#commands)

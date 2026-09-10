@@ -1,3 +1,5 @@
+run-local-client-local.ps1
+
 .vim/
 .vscode/
 board-net*

@@ -7,7 +7,7 @@
  * file will be send back to the server once it finished rendering.
  */
 
-import { dirname, join } from '@std/path';
+import { join } from '@std/path';
 import { logger } from './logger.ts';
 import {
   AutorenderDataType,
@@ -21,9 +21,8 @@ import { ClientState, ClientStatus } from './state.ts';
 import { UploadWorkerDataType } from './upload.ts';
 import { GameConfig, getConfig } from './config.ts';
 import { WorkerDataType } from './worker.ts';
-import { UserAgent } from './constants.ts';
-import { createFolders, GameProcess } from './game.ts';
-import { gameModFolder, realGameModFolder } from './utils.ts';
+import { createFolders, encodeSourceCapture, GameProcess } from './game.ts';
+import { realGameModFolder } from './utils.ts';
 import { parseArgs } from './cli.ts';
 
 addEventListener('error', (ev) => {
@@ -46,7 +45,7 @@ const state: ClientState = {
   payloads: [],
 };
 
-let idleTimer: number | null = null;
+let idleTimer: ReturnType<typeof setTimeout> | null = null;
 
 // Worker thread for connecting to the server.
 const worker = new Worker(new URL('./worker.ts', import.meta.url).href, {
@@ -219,6 +218,10 @@ const handleMessageStart = async (game: GameConfig) => {
       videos: state.videos,
     });
 
+    for (const video of state.videos) {
+      await encodeSourceCapture(config, game, video);
+    }
+
     // Let another thread handle the upload.
     upload.postMessage({
       type: UploadWorkerDataType.Upload,
@@ -238,33 +241,6 @@ const handleMessageStart = async (game: GameConfig) => {
 
     fetchNextVideos();
   }
-};
-
-const downloadWorkshopMap = async (mapFile: string, video: VideoPayload) => {
-  logger.info('Downloading map', video.file_url);
-
-  const steamResponse = await fetch(video.file_url, {
-    headers: {
-      'User-Agent': UserAgent,
-    },
-  });
-
-  if (!steamResponse.ok) {
-    throw new Error(
-      `Failed to download map ${video.file_url} for video ${video.video_id} : ${steamResponse.status}`,
-    );
-  }
-
-  try {
-    await Deno.mkdir(dirname(mapFile));
-  } catch (err) {
-    logger.error(err);
-  }
-
-  const map = await steamResponse.arrayBuffer();
-  await Deno.writeFile(mapFile, new Uint8Array(map));
-
-  logger.info('Downloaded map to', mapFile);
 };
 
 /**
@@ -294,23 +270,6 @@ const handleMessageBuffer = async (buffer: ArrayBuffer) => {
       throw new Error(
         `Unable to handle message buffer because unsupported game mod "${video.demo_game_dir}" found.`,
       );
-    }
-
-    // Check if a workshop map needs to be downloaded.
-    if (video.file_url) {
-      const mapFile = gameModFolder(game, 'maps', `${video.full_map_name}.bsp`);
-      let downloadMapFile = false;
-
-      try {
-        await Deno.stat(mapFile);
-        logger.info('Map', mapFile, 'already downloaded');
-      } catch {
-        downloadMapFile = true;
-      }
-
-      if (downloadMapFile) {
-        await downloadWorkshopMap(mapFile, video);
-      }
     }
 
     await Deno.writeFile(
