@@ -7,6 +7,7 @@
  *  - Extract video duration
  *  - Generate thumbnail
  *  - Generate preview
+ *  - Parse demo inputs
  *  - Delete local video file
  */
 
@@ -15,11 +16,13 @@ import { PendingStatus, Video } from '~/shared/models.ts';
 import { installLogger, logger } from '../logger.ts';
 import {
   getDemoFilePath,
+  getDemoInputsFilePath,
   getVideoFilePath,
   getVideoPreviewPath,
   getVideoThumbnailPath,
   getVideoThumbnailSmallPath,
 } from '../utils.ts';
+import { getInputDataFromFile } from '../demo.ts';
 
 const POST_PROCESS_UPDATE_INTERVAL = 60 * 1_000;
 const FFMPEG_PROCESS_TIMEOUT = 5 * 60 * 1_000;
@@ -274,6 +277,20 @@ const processVideos = async () => {
     }
 
     const demoFile = getDemoFilePath(video);
+
+    try {
+      const inputs = await getInputDataFromFile(demoFile);
+
+      if (inputs) {
+        await Deno.writeFile(
+          getDemoInputsFilePath(video),
+          new Uint8Array(inputs.buffer, inputs.byteOffset, inputs.byteLength),
+        );
+      }
+    } catch (err) {
+      logger.error(`Failed to write inputs ${video.share_id}`);
+      logger.error(err);
+    }
 
     if (video.board_changelog_id) {
       try {

@@ -367,12 +367,34 @@ export const getPlayerInfo = (demo: SourceDemo): PlayerInfoData => {
   };
 };
 
+export const getInputDataFromFile = async (filePath: string): Promise<Uint32Array | null> => {
+  try {
+    const buffer = await Deno.readFile(filePath);
+    const buf = parser.prepare(buffer.buffer);
+    const demo = SourceDemo.default();
+
+    demo.readHeader(buf);
+
+    if (demo.gameDirectory !== GameMod.Portal2 || demo.demoProtocol !== 4 || demo.networkProtocol !== 37) {
+      return null;
+    }
+
+    readPortal2Beta8520Messages(demo, buf);
+    demo.adjustTicks().adjustRange(0, 0, 60);
+
+    return getInputData(demo);
+  } catch (err) {
+    logger.error('Failed to parse demo inputs', filePath, err);
+    return null;
+  }
+};
+
 export const getInputData = (demo: SourceDemo): Uint32Array | null => {
   try {
-    demo.detectGame()
-      .adjustTicks()
-      .adjustRange()
-      .readUserCmds();
+    // The 852_0 outer message stream was parsed with its custom four-CmdInfo
+    // packet layout. Only decode the usercmd payloads here; retail game
+    // detection would interpret the beta packet layout incorrectly.
+    demo.readUserCmds();
 
     const msgs = demo.findMessages<Messages.UserCmd>((msg) => {
       return msg instanceof DemoMessages.UserCmd &&
