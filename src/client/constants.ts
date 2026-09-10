@@ -9,12 +9,12 @@ export const AutorenderVersion = '1.0.5';
 export const ReleaseTag = `client-${AutorenderVersion}`;
 
 export const AutorenderConnectUri = {
-  dev: 'wss://autorender.portal2.local/connect/client',
+  dev: 'ws://127.0.0.1:8080/connect/client',
   prod: 'wss://autorender.portal2.sr/connect/client',
 };
 
 export const AutorenderBaseApi = {
-  dev: 'https://autorender.portal2.local',
+  dev: 'http://127.0.0.1:8080',
   prod: 'https://autorender.portal2.sr',
 };
 

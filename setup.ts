@@ -11,7 +11,7 @@ import { Input, Secret, Select } from 'jsr:@cliffy/prompt@1.0.0-rc.7';
 type Environment = 'dev' | 'prod';
 
 // Used for template file in docker/compose, for the public URI in .env files and for generating SSL certs.
-const devHostname = 'autorender.portal2.local';
+const devHostname = '127.0.0.1';
 
 // Used to download files for prod setup.
 const repositoryUrl = 'https://raw.githubusercontent.com/NeKzor/autorender/main/';

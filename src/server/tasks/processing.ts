@@ -137,7 +137,7 @@ const getPreviewUrl = async (video: VideoSelect) => {
       return null;
     }
 
-    return `${AUTORENDER_PUBLIC_URI}/storage/previews/${video.share_id}`;
+    return `/storage/previews/${video.share_id}`;
   } catch (err) {
     logger.error(err);
     return null;
@@ -192,7 +192,7 @@ const getThumbnailUrl = async (video: VideoSelect, options: { videoLength: numbe
       return null;
     }
 
-    return `${AUTORENDER_PUBLIC_URI}/storage/thumbnails/${video.share_id}${options.small ? '/small' : ''}`;
+    return `/storage/thumbnails/${video.share_id}${options.small ? '/small' : ''}`;
   } catch (err) {
     logger.error(err);
     return null;

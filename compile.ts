@@ -8,7 +8,7 @@ import { join } from 'jsr:@std/path';
 import { Command } from 'jsr:@cliffy/command@1.0.0-rc.7';
 import { colors } from 'jsr:@cliffy/ansi@1.0.0-rc.7/colors';
 
-const devHostname = 'autorender.portal2.local';
+const devHostname = '127.0.0.1';
 
 type SupportedTarget = {
   target: string;

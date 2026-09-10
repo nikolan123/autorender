@@ -367,7 +367,7 @@ const renderOptions: ApplicationCommandOption[] = [
   },
   {
     name: 'quality',
-    description: 'Quality option (default 720p).',
+    description: 'Quality option (default 480p).',
     type: ApplicationCommandOptionTypes.String,
     required: false,
     autocomplete: true,
@@ -665,7 +665,7 @@ createCommand({
   },
 });
 
-const qualityOptionChoices: ApplicationCommandOptionChoice[] = [
+const allQualityOptionChoices: ApplicationCommandOptionChoice[] = [
   {
     name: '480p (SD)',
     value: '480p',
@@ -687,6 +687,12 @@ const qualityOptionChoices: ApplicationCommandOptionChoice[] = [
     value: '2160p',
   },
 ];
+
+const configuredMaxQuality = Deno.env.get('AUTORENDER_MAX_RENDER_QUALITY') ?? '2160p';
+const configuredMaxQualityIndex = allQualityOptionChoices.findIndex(({ value }) => value === configuredMaxQuality);
+const qualityOptionChoices = configuredMaxQualityIndex === -1
+  ? allQualityOptionChoices
+  : allQualityOptionChoices.slice(0, configuredMaxQualityIndex + 1);
 
 const validateQualityOption = (
   interactionData: InteractionDataOption,

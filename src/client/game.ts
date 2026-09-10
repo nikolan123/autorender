@@ -99,7 +99,7 @@ export const prepareGameLaunch = async (
   const firstVideo = videos?.at(0);
 
   // Quality for each video here should be the same which is handled server-side.
-  const [width, height] = getGameResolution(firstVideo?.render_quality ?? RenderQuality.HD_720p);
+  const [width, height] = getGameResolution(firstVideo?.render_quality ?? RenderQuality.SD_480p);
 
   let autoexecFile = '';
 
@@ -109,6 +109,7 @@ export const prepareGameLaunch = async (
 
     const autoexec = [
       'fps_max 60',
+      'engine_no_focus_sleep 0',
       'host_framerate 60',
       'demo_quitafterplayback 1',
       renderOptions,
@@ -170,13 +171,11 @@ export const encodeSourceCapture = async (config: Config, game: GameConfig, vide
     '-i',
     audioFile,
     '-c:v',
-    'libx264',
-    '-preset',
-    'medium',
-    '-crf',
+    'h264_qsv',
+    '-global_quality',
     '18',
     '-pix_fmt',
-    'yuv420p',
+    'nv12',
     '-c:a',
     'aac',
     '-b:a',
@@ -264,6 +263,23 @@ export class GameProcess {
     this.killed = false;
     this.process = command.spawn();
     this.processName = game.proc;
+
+    // The 852_0 engine throttles heavily while unfocused. The render client is
+    // started by a hidden scheduled task, so explicitly focus the real hl2
+    // window once the wrapper has spawned it.
+    new Deno.Command('powershell.exe', {
+      args: [
+        '-NoProfile',
+        '-WindowStyle',
+        'Hidden',
+        '-ExecutionPolicy',
+        'Bypass',
+        '-File',
+        join(import.meta.dirname!, 'focus-game.ps1'),
+      ],
+      stdout: 'null',
+      stderr: 'null',
+    }).spawn();
 
     logger.info(`Spawned process ${this.process.pid}`);
 

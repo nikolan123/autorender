@@ -176,7 +176,7 @@ export const insertVideo = async (boardSource: BoardSource, entry: ChangelogEntr
 
     const title = `${entry.chamberName} in ${formatCmTime(entry.score)} by ${entry.player_name}`;
     const comment = entry.note;
-    const renderQuality = RenderQuality.HD_720p;
+    const renderQuality = RenderQuality.SD_480p;
     const renderOptions = [
       ...(map.auto_fullbright
         ? [

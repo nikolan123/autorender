@@ -97,6 +97,14 @@ const AUTORENDER_BOT_TOKEN_HASH = await bcrypt.hash(
 );
 const AUTORENDER_MAX_DEMO_FILE_SIZE = Number(Deno.env.get('AUTORENDER_MAX_DEMO_FILE_SIZE')) * 1e6;
 const AUTORENDER_MAX_VIDEO_FILE_SIZE = Number(Deno.env.get('AUTORENDER_MAX_VIDEO_FILE_SIZE')) * 1e6;
+const AUTORENDER_MAX_RENDER_QUALITY = Deno.env.get('AUTORENDER_MAX_RENDER_QUALITY') ?? RenderQuality.UHD_2160p;
+const AUTORENDER_RENDER_QUALITIES = [
+  RenderQuality.SD_480p,
+  RenderQuality.HD_720p,
+  RenderQuality.FHD_1080p,
+  RenderQuality.QHD_1440p,
+  RenderQuality.UHD_2160p,
+];
 const DISCORD_BOARD_INTEGRATION_WEBHOOK_URL = Deno.env.get('DISCORD_BOARD_INTEGRATION_WEBHOOK_URL')!;
 const BOARD_DOMAIN = Deno.env.get('BOARD_DOMAIN')!;
 const BOARD_API_TOKEN = Deno.env.get('BOARD_API_TOKEN')!;
@@ -378,7 +386,16 @@ apiV1
     const requestedInChannelId = data.get('requested_in_channel_id') ?? null;
     const requestedInChannelName = data.get('requested_in_channel_name') ??
       null;
-    const renderQuality = data.get('quality') ?? RenderQuality.HD_720p;
+    const renderQuality = data.get('quality')?.toString() ?? RenderQuality.SD_480p;
+    const maxRenderQualityIndex = AUTORENDER_RENDER_QUALITIES.indexOf(
+      AUTORENDER_MAX_RENDER_QUALITY as RenderQuality,
+    );
+    const allowedRenderQualities = maxRenderQualityIndex === -1
+      ? [RenderQuality.SD_480p]
+      : AUTORENDER_RENDER_QUALITIES.slice(0, maxRenderQualityIndex + 1);
+    if (!allowedRenderQualities.includes(renderQuality as RenderQuality)) {
+      return Err(ctx, Status.BadRequest, `Unsupported render quality: ${renderQuality}`);
+    }
     const renderOptions = [
       ...(map.auto_fullbright && !data.get('render_options')?.toString()?.includes('mat_fullbright')
         ? [
@@ -691,7 +708,7 @@ apiV1
             logger.error(err);
           }
         } else {
-          videoUrl = `${AUTORENDER_PUBLIC_URI}/storage/videos/${video.share_id}`;
+          videoUrl = `/storage/videos/${video.share_id}`;
         }
       }
 

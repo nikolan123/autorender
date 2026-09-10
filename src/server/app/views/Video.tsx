@@ -33,6 +33,7 @@ type Data = JoinedVideo | undefined;
 
 export const meta: PageMeta<Data> = ({ data, context }) => {
   const isQueueRoute = context.url.pathname.startsWith('/queue');
+  const videoUrl = data?.video_url ? new URL(data.video_url, context.url).href : undefined;
 
   return {
     title: data?.title,
@@ -42,8 +43,8 @@ export const meta: PageMeta<Data> = ({ data, context }) => {
     'og:type': isQueueRoute ? undefined : 'video',
     'og:video': isQueueRoute
       ? undefined
-      : data?.video_url
-      ? data.video_url.endsWith('.mp4') ? data.video_url : data.video_url + '.mp4'
+      : videoUrl
+      ? videoUrl.endsWith('.mp4') ? videoUrl : videoUrl + '.mp4'
       : undefined,
   };
 };
